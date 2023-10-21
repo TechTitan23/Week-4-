@@ -1,0 +1,294 @@
+ Exercise :
+
+1. Write a program to find the maximum and minimum number in an array
+Pseudocode :
+int[] findMinimumAndMaximum(int begin, int end,int input[])
+{
+    int maximum;
+   int minimum;
+    if ( begin == end )
+    {
+        minimum = input[begin]
+        maximum = input[begin]
+    }
+    else if ( begin + 1 == end )
+    {
+        if ( input[begin] < input[end] )
+        {
+            minimum = input[begin]
+            maximum = input[end]
+        }
+        else
+      {
+            minimum = input[end]
+            maximum = input[begin]
+        }
+    }
+    else
+    {
+        int midpoint = begin + (end - begin)/2
+        int leftArray[] = findMinimumAndMaximum(begin, midpoint, input)
+        int rightArray[] = findMinimumAndMaximum(midpoint+1, end, input)
+        if ( leftArray[0] > rightArray[0] )
+            maximum = leftArray[0]
+        else
+            maximum = rightArray[0]
+        if ( leftArray[1] < rightArray[1] )
+            minimum = leftArray[1]
+        else
+            minimum = rightArray[1]
+    }
+    
+    int result[2] = {maximum, minimum}
+   return result
+}
+
+2. Write a program to add 2  matrices using multi-dimensional array 
+Pseudocode :
+Function AddMatrices(matrixA, matrixB)
+    if dimensions of matrixA are not equal to dimensions of matrixB
+        return "Matrix dimensions are not compatible for addition"
+    
+    numRows = number of rows in matrixA
+    numCols = number of columns in matrixA
+
+    // Create a result matrix with the same dimensions as matrixA and matrixB
+    resultMatrix[numRows][numCols]
+
+    for i from 0 to numRows - 1
+        for j from 0 to numCols - 1
+            resultMatrix[i][j] = matrixA[i][j] + matrixB[i][j]
+
+    return resultMatrix
+End Function
+
+3. Write a program to swap two string variables without using a third variable.
+Pseudocode :
+Function SwapStringsWithoutTemp(str1, str2)
+    str1 = str1 + str2  // Concatenate str1 and str2
+    str2 = str1 - str2  // Extract original str1 from the concatenated string
+    str1 = str1 - str2  // Extract original str2 from the concatenated string
+
+    // Now, str1 contains the original value of str2, and str2 contains the original value of str1
+End Function
+
+4. Write a program to find the transpose of a matrix.
+Pseudocode :
+Function TransposeMatrix(matrix)
+    numRows = number of rows in matrix
+    numCols = number of columns in matrix
+
+    // Create a new matrix with swapped dimensions (rows become columns and vice versa)
+    transposedMatrix[numCols][numRows]
+
+    for i from 0 to numRows - 1
+        for j from 0 to numCols - 1
+            transposedMatrix[j][i] = matrix[i][j]
+
+    return transposedMatrix
+End Function
+
+5. Write a program to find the average of the array elements.
+Pseudocode :
+Function FindAverage(arr)
+    if length of arr is 0
+        return 0  // Cannot compute average of an empty array
+
+    sum = 0  // Initialize the sum of elements to 0
+
+    for each element in arr
+        sum = sum + element  // Add each element to the sum
+
+    average = sum / length of arr  // Calculate the average
+
+    return average
+End Function
+
+6. Write a program to calculate the product of the array elements.
+Pseudocode:
+Input: arr[]
+ Initialise with start and last pointers i.e i,j. and also initialise product=0
+ Iterate i=0 to i>j;
+    i+=1
+    j-=1
+ Multiply first and last numbers (i*j)at a time while iterating.
+ if i==j multiply element only once.
+
+7. Write a program to perform  linear search
+Pseudocode :
+procedure linear_search (list, value)
+
+   for each item in the list
+      if match item == value
+         return the item's location
+      end if
+   end for
+
+end procedure
+
+8. Write a program to perform  binary search 
+Pseudocode :
+Procedure binary_search
+   A ← sorted array
+   n ← size of array
+   x ← value to be searched
+
+   Set lowerBound = 1
+   Set upperBound = n 
+
+   while x not found
+      if upperBound < lowerBound 
+         EXIT: x does not exist.
+   
+      set midPoint = lowerBound + ( upperBound - lowerBound ) / 2
+      
+      if A[midPoint] < x
+         set lowerBound = midPoint + 1
+         
+      if A[midPoint] > x
+         set upperBound = midPoint - 1 
+
+      if A[midPoint] = x 
+         EXIT: x found at location midPoint
+   end while
+   
+end procedure
+
+9. Write a program to Reverse Words in a String
+Pseudocode :
+Function ReverseWordsInString(inputString)
+    // Split the input string into words using space as a delimiter
+    words = Split(inputString, " ")
+    
+    // Initialize an empty result string
+    reversedString = ""
+
+    // Iterate through the words in reverse order and append them to the result string
+    for i from length of words - 1 down to 0
+        reversedString = reversedString + words[i]
+        if i > 0
+            reversedString = reversedString + " "  // Add a space between words
+
+    return reversedString
+End Function
+
+10. Write a program to Remove Duplicates in place from Sorted Array
+Pseudocode :
+Function RemoveDuplicatesFromSortedArray(arr)
+    if length of arr is 0
+        return 0  // No duplicates to remove in an empty array
+
+    uniqueIndex = 0  // Initialize a unique index
+
+    for i from 1 to length of arr - 1
+        if arr[i] != arr[uniqueIndex]
+            uniqueIndex = uniqueIndex + 1
+            arr[uniqueIndex] = arr[i]
+
+    // The unique elements are now from arr[0] to arr[uniqueIndex]
+    return uniqueIndex + 1  // Return the length of the unique elements
+End Function
+
+11. Write a program to buy and sell stocks.
+Pseudocode :
+Function MaxProfit(prices)
+    if length of prices is less than 2
+        return 0  // Cannot make a profit with less than two prices
+
+    maxProfit = 0
+    minPrice = prices[0]
+
+    for i from 1 to length of prices - 1
+        if prices[i] < minPrice
+            minPrice = prices[i]
+        else if prices[i] - minPrice > maxProfit
+            maxProfit = prices[i] - minPrice
+
+    return maxProfit
+End Function
+
+12. Which search algorithm is more efficient for a sorted list with a large number of elements? 
+a. Linear search
+b. Binary search 
+c. Both have the same efficiency. 
+d. It depends on the specific input data.
+Answer : b. Binary search
+Explanation: Binary searches are efficient algorithms based on the concept of “divide and conquer” that improves the search by recursively dividing the array in half until you either find the element or the list gets narrowed down to one piece that doesn't match the needed element
+
+13. Which of the following statements about O(log n) time complexity is true?
+      a. It represents constant time. 
+      b. It represents linear time.
+      c. It represents logarithmic time. 
+      d. It represents quadratic time.
+      Answer :c. It represents logarithmic time.
+      Explanation:When the algorithm runtime increases very slowly compared to an increase in input size i.e. logarithm of input size then the algorithm is said to exhibit logarithmic time complexity.
+
+14. What is the time complexity of a linear search in an array of size n?
+      a. O(1) 
+      b. O(log n) 
+      c. O(n) 
+      d. O(n^2)
+       Answer :c. O(n)
+       Explanation:Time complexity for linear search is denoted by O(n) as every element in the array is compared only once. In linear search, best-case complexity is O(1) where the element is found at the first index. Worst-case complexity is O(n) where the element found at the last index of element is not present in the array.
+
+15. What is the time complexity of binary search in the worst case?
+ 	a. O(1)
+ 	b. O(log n) 
+	c. O(n) 
+	d. O(n^2)
+Answer :b. O(log n)
+Explanation:Binary search's worst-case time complexity is O(log n) because it repeatedly divides the search space in half, making it a highly efficient algorithm for finding elements in a sorted array.
+
+16. What is the space complexity of a recursive algorithm with n levels of recursion, where each level consumes O(1) memory?
+	a. O(n) 
+	b. O(log n) 
+	c. O(1) 
+	d. O(n^2)
+Answer :a. O(n)
+Explanation:The space complexity of a recursive algorithm with n levels of recursion, where each level consumes O(1) memory, is O(n). This is because, in a recursive algorithm, memory is allocated for each recursive call, and with n levels of recursion, you'll have n recursive calls on the call stack, each consuming O(1) memory. The space used is directly proportional to the number of recursive calls, which is n in this case.
+
+17. Which notation is commonly used to describe the upper bound of an algorithm's time complexity? 
+	a. O(1)
+ 	b. O(n)
+ 	c. O(log n) 
+	d. O(n^2)
+Answer : b. O(n)
+Explanation:The commonly used notation to describe the upper bound of an algorithm's time complexity is "Big O notation" (often written as O). It provides an upper limit on the growth rate of an algorithm's running time in the worst-case scenario. In short, Big O notation is used to express how the algorithm's performance scales with the input size, which helps in comparing and analysing algorithm efficiency.
+
+ 18. Which search algorithm works equally well for sorted and unsorted data? 
+	a. Linear search
+ 	b. Binary search
+	c. Both require sorted data. 
+	d. Neither requires sorted data.
+Answer:a. Linear search
+Explanation: Linear search is an algorithm that works equally well for both sorted and unsorted data.
+In a linear search, you start from the beginning of the data and check each element one by one until you find the target element or determine that it doesn't exist. Since it doesn't rely on any specific order or structure of the data, it's applicable to both sorted and unsorted data.
+However, it's important to note that for sorted data, binary search is a more efficient option, as it takes advantage of the data's ordering to achieve faster search times (O(log n) in the worst case) compared to linear search (O(n) in the worst case).
+
+19. What is the time, and space complexity of the following code
+	int a = 0, b = 0;
+	for (i = 0; i < N; i++)
+ 		{
+			a = a + Math.random();
+		}
+	for (j = 0; j < M; j++)
+ 	{
+		b = b + Math.random();
+	}
+Answer :O(N + M) time, O(1) space
+Explanation:The first loop is O(N) and the second loop is O(M). Since N and M are independent variables, we can’t say which one is the leading term. Therefore Time complexity of the given problem will be O(N+M).
+Since variables size does not depend on the size of the input, therefore  Space Complexity will be constant or O(1)
+
+ 20. What does it mean when we say that an algorithm X is asymptotically more efficient than Y? 
+	a.X will always be a better choice for small inputs
+	b.X will always be a better choice for large inputs
+	c.Y will always be a better choice for small inputs
+	d.X will always be a better choice for all inputs
+Answer :b.X will always be a better choice for large inputs
+Explanation:In asymptotic analysis, we consider the growth of the algorithm in terms of input size. An algorithm X is said to be asymptotically better than Y if X takes smaller time than y for all input sizes n larger than a value n0 where n0 > 0.
+
+21. Algorithms A and B have a worst-case running time of O(n) and O(logn), respectively. Therefore, algorithm B always runs faster than algorithm A.
+	a.True
+	b.False
+Answer : b.False
+Explanation:The Big-O notation provides an asymptotic comparison in the running time of algorithms. For n < n0​​, algorithm A might run faster than algorithm B, for instance.
